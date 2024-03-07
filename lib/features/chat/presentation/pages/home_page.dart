@@ -2,6 +2,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'chat_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
@@ -43,7 +45,13 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 width: 100,
                 child: TextField(
-                  onSubmitted: (String val) {},
+                  onSubmitted: (String val) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>const ChatPage(),
+                        ));
+                  },
                   // showCursor: true,
                   autofocus: true,
                   style:
@@ -71,7 +79,6 @@ class HomePage extends StatelessWidget {
                       GoogleFonts.firaCode(color: Colors.green, fontSize: 18))
             ],
           ),
-          
         ],
       ),
     );
