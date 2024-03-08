@@ -40,7 +40,7 @@ async function getUser(from: Socket) {
 }
 
 io.on('connection', (socket) => {
-    socket.emit('connecsuc', `your id ${socket.id}`);
+    socket.emit('connectonEvent', `your id ${socket.id}`);
 
 
     socket.on('make', async () => {
@@ -50,9 +50,8 @@ io.on('connection', (socket) => {
 
         connections.set(socket.id, to.id);
         connections.set(to.id, socket.id);
-        socket.emit('connecsuc', `connected with ${to.id}`);
-        to.emit('connecsuc', `connected with ${socket.id}`);
-
+        socket.emit('userConnected', `connected with ${to.id}`);
+        to.emit('userConnected', `connected with ${socket.id}`);
 
 
         users.delete(socket.id);
@@ -74,7 +73,7 @@ io.on('connection', (socket) => {
         if (touserId) {
             const toUser = io.sockets.sockets.get(touserId);
             if (toUser) {
-                toUser.emit('connecsuc', `User ${socket.id} is diconnected`);
+                toUser.emit('userDisconnected', `User ${socket.id} is diconnected`);
                 connections.delete(socket.id);
                 connections.delete(toUser.id);
             } else {
@@ -102,7 +101,7 @@ io.on('connection', (socket) => {
         console.log(`${event} | ${args}`);
     });
 
-    
+
     socket.onAny((event, args) => {
         console.log('Users : ');
         let i = 0;
