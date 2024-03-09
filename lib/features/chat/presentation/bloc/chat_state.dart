@@ -13,8 +13,14 @@ class ChatRecivedState extends ChatInitial {
   final List<String> messages;
 
   ChatRecivedState(this.messages);
+
+  @override
+  List<Object> get props => [messages];
 }
 
-class UserDisconnectedState extends ChatInitial {}
+class UserDisconnectedState extends ChatInitial {
+}
 
 class UserConnectedState extends ChatInitial {}
+
+class LoadingState extends ChatInitial {}

@@ -6,13 +6,15 @@ import 'package:randomweb/features/chat/data/repositories/repository.dart';
 import '../bloc/chat_bloc.dart';
 
 class ChatPage extends StatelessWidget {
-  final Repository repository = Repository();
-  ChatPage({super.key});
+  // final List<String> messages = [];
+
+  const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    repository.makeConnection();
-    repository.listen(context);
+    Repository.instance.makeConnection();
+    BlocProvider.of<ChatBloc>(context).add(AddLoadingEvent());
+    Repository.instance.listen(context);
 
     return Scaffold(
       body: BlocListener<ChatBloc, ChatState>(
@@ -38,6 +40,8 @@ class ChatPage extends StatelessWidget {
                   BlocBuilder<ChatBloc, ChatState>(
                     builder: (context, state) {
                       if (state is ChatRecivedState) {
+                        print('Log : Rebuilding.......');
+                        print('Message :' + state.messages.last);
                         return Expanded(
                           child: ListView.builder(
                             itemCount: state.messages.length,
@@ -48,8 +52,14 @@ class ChatPage extends StatelessWidget {
                             },
                           ),
                         );
+                      } else if (state is LoadingState) {
+                        return const Expanded(
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
                       } else {
-                        return Container();
+                        return Expanded(child: Container());
                       }
                     },
                   ),
@@ -65,7 +75,10 @@ class ChatPage extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                       child: TextField(
                         autofocus: true,
-                        onSubmitted: (val) {},
+                        onSubmitted: (val) {
+                          BlocProvider.of<ChatBloc>(context)
+                              .add(SendMessageEvent(val));
+                        },
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           fillColor: Colors.black,
@@ -90,7 +103,21 @@ class ChatPage extends StatelessWidget {
   }
 
   void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(
+        message,
+        style: GoogleFonts.firaCode(color: Colors.green, fontSize: 18),
+      ),
+      backgroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: const BorderSide(color: Colors.green)),
+      elevation: 0,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).size.height - 100,
+          left: MediaQuery.of(context).size.width - 500,
+          right: 20),
+    ));
   }
 }

@@ -20,4 +20,9 @@ class SendMessageEvent extends ChatEvent {
 class MessageRecivedEvent extends ChatEvent {
   final String message;
   const MessageRecivedEvent(this.message);
+
+  @override
+  List<Object> get props => [message];
 }
+
+class AddLoadingEvent extends ChatEvent {}

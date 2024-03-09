@@ -6,23 +6,31 @@ part 'chat_event.dart';
 part 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc() : super(ChatInitial()) {
-    final List<String> messages = [];
+  List<String> messages = [];
 
+  ChatBloc() : super(ChatInitial()) {
     on<MessageRecivedEvent>((event, emit) {
       messages.add(event.message);
-      emit(ChatRecivedState(messages));
+      emit(ChatRecivedState(List<String>.from(messages)));
     });
 
     on<SendMessageEvent>((event, emit) {
-      Repository().sendMessage(event.message);
+      Repository.instance.sendMessage(event.message);
     });
 
     on<UserConnectedEvent>((event, emit) {
+      messages = [];
       emit(UserConnectedState());
     });
     on<UserDisconnectedEvent>((event, emit) {
+      messages = [];
       emit(UserDisconnectedState());
     });
+
+    on<AddLoadingEvent>(
+      (event, emit) {
+        emit(LoadingState());
+      },
+    );
   }
 }
