@@ -6,7 +6,7 @@ import 'features/chat/data/datasources/socket_api.dart';
 import 'features/chat/presentation/bloc/chat_bloc.dart';
 
 void main() {
-  SocketAPI.instance.createConnection();
+  
   runApp(const MyApp());
 }
 

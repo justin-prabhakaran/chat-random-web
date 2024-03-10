@@ -1,0 +1,83 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+ShaderCompilerException: ShaderCompilerException: Shader compilation of "/home/crazyshit/snap/flutter/common/flutter/packages/flutter/lib/src/material/shaders/ink_sparkle.frag" to "build/flutter_assets/shaders/ink_sparkle.frag" failed with exit code 1.
+impellerc stdout:
+
+impellerc stderr:
+Could not write file to build/flutter_assets/shaders/ink_sparkle.frag
+
+
+
+
+```
+#0      ShaderCompiler.compileShader (package:flutter_tools/src/build_system/targets/shader_compiler.dart:200:9)
+<asynchronous suspension>
+#1      writeBundle.<anonymous closure> (package:flutter_tools/src/bundle_builder.dart:195:25)
+<asynchronous suspension>
+#2      Future.wait.<anonymous closure> (dart:async/future.dart:518:21)
+<asynchronous suspension>
+#3      writeBundle (package:flutter_tools/src/bundle_builder.dart:173:3)
+<asynchronous suspension>
+#4      WebDevFS.update (package:flutter_tools/src/isolated/devfs_web.dart:883:9)
+<asynchronous suspension>
+#5      ResidentWebRunner._updateDevFS (package:flutter_tools/src/isolated/resident_web_runner.dart:549:35)
+<asynchronous suspension>
+#6      ResidentWebRunner.run.<anonymous closure> (package:flutter_tools/src/isolated/resident_web_runner.dart:319:41)
+<asynchronous suspension>
+#7      asyncGuard.<anonymous closure> (package:flutter_tools/src/base/async_guard.dart:111:24)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter (Channel stable, 3.19.1, on Linux Mint 21.2 5.15.0-94-generic, locale en_IN)
+    [32m•[39m Flutter version 3.19.1 on channel stable at /home/crazyshit/snap/flutter/common/flutter
+    [32m•[39m Upstream repository https://github.com/flutter/flutter.git
+    [32m•[39m Framework revision abb292a07e (3 weeks ago), 2024-02-20 14:35:05 -0800
+    [32m•[39m Engine revision 04817c99c9
+    [32m•[39m Dart version 3.3.0
+    [32m•[39m DevTools version 2.31.1
+
+[33m[!][39m Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+    [32m•[39m Android SDK at /home/crazyshit/Android/Sdk
+    [31m✗[39m cmdline-tools component is missing
+      Run `path/to/sdkmanager --install "cmdline-tools;latest"`
+      See https://developer.android.com/studio/command-line for more details.
+    [31m✗[39m Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/docs/get-started/install/linux#android-setup for more details.
+
+[32m[✓][39m Chrome - develop for the web
+    [32m•[39m Chrome at google-chrome
+
+[32m[✓][39m Linux toolchain - develop for Linux desktop
+    [32m•[39m clang version 10.0.0-4ubuntu1
+    [32m•[39m cmake version 3.16.3
+    [32m•[39m ninja version 1.10.0
+    [32m•[39m pkg-config version 0.29.1
+
+[33m[!][39m Android Studio (not installed)
+    [32m•[39m Android Studio not found; download from https://developer.android.com/studio/index.html
+      (or visit https://flutter.dev/docs/get-started/install/linux#android-setup for detailed instructions).
+
+[32m[✓][39m VS Code (version 1.87.1)
+    [32m•[39m VS Code at /snap/code/current/usr/share/code
+    [32m•[39m Flutter extension version 3.84.0
+
+[32m[✓][39m Connected device (2 available)
+    [32m•[39m Linux (desktop) • linux  • linux-x64      • Linux Mint 21.2 5.15.0-94-generic
+    [32m•[39m Chrome (web)    • chrome • web-javascript • Google Chrome 121.0.6167.184
+
+[32m[✓][39m Network resources
+    [32m•[39m All expected network resources are available.
+
+[33m![39m Doctor found issues in 2 categories.
+```

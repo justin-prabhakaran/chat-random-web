@@ -12,13 +12,13 @@ class UserDisconnectedEvent extends ChatEvent {}
 class UserConnectedEvent extends ChatEvent {}
 
 class SendMessageEvent extends ChatEvent {
-  final String message;
+  final Message message;
 
   const SendMessageEvent(this.message);
 }
 
 class MessageRecivedEvent extends ChatEvent {
-  final String message;
+  final Message message;
   const MessageRecivedEvent(this.message);
 
   @override

@@ -10,7 +10,7 @@ abstract class ChatState extends Equatable {
 class ChatInitial extends ChatState {}
 
 class ChatRecivedState extends ChatInitial {
-  final List<String> messages;
+  final List<Message> messages;
 
   ChatRecivedState(this.messages);
 
@@ -18,8 +18,11 @@ class ChatRecivedState extends ChatInitial {
   List<Object> get props => [messages];
 }
 
-class UserDisconnectedState extends ChatInitial {
+class ChatSendState extends ChatInitial {
+
 }
+
+class UserDisconnectedState extends ChatInitial {}
 
 class UserConnectedState extends ChatInitial {}
 
