@@ -12,8 +12,6 @@ class HomePage extends StatelessWidget {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         if (sizingInformation.isMobile) {
-          print('Mobile');
-          //Todo : need mobile page
           return const MobileHomePage();
         }
         if (sizingInformation.isDesktop) {

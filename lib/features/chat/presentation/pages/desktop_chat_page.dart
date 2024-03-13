@@ -147,7 +147,7 @@ class _DesktopChatPageState extends State<DesktopChatPage> {
                     } else if (state is LoadingState) {
                       return const Expanded(
                         child: Center(
-                            child: SpinKitCubeGrid(
+                            child: SpinKitThreeBounce(
                           color: Colors.green,
                         )),
                       );
