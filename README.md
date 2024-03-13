@@ -29,3 +29,4 @@ Random Chat is a mobile application built with the Flutter framework for the fro
 - **Chat Room Options**: Implement options for users to choose specific chat rooms based on interests.
 - **Encryption**: Enhance security by implementing end-to-end encryption for messages.
 
+The web version of Random Chat is deployed and accessible [here](https://justin-prabhakaran.github.io/randomchat.github.io/).
