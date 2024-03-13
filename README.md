@@ -1,4 +1,4 @@
-# Random Chat
+# Random Chat [here](https://justin-prabhakaran.github.io/randomchat.github.io/)
 
 Random Chat is a mobile application built with the Flutter framework for the frontend and Node.js with Socket.IO for the backend. It allows users to connect with random strangers for real-time chat sessions, offering an engaging and spontaneous chatting experience.
 
