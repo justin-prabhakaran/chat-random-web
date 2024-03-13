@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:randomweb/features/chat/data/models/message.dart';
 import 'package:randomweb/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:socket_io_client/socket_io_client.dart';
@@ -24,17 +22,16 @@ class Repository {
 
   void makeConnection() {
     _socket.emit('make');
-    print('Log : Connection Making......');
+   
   }
 
   void sendMessage(String message) {
-    print('Log : Messaging..........');
+    
     _socket.emit('message', message);
   }
 
   void listen() {
-    print('Log : Listening..........');
-
+   
     _socket.once('userDisconnected', (data) {
       _socket.clearListeners();
       // BlocProvider.of<ChatBloc>(context).add(
@@ -52,7 +49,7 @@ class Repository {
     });
 
     _socket.on('message', (message) {
-      print('Log : Message Recieved......' + message);
+      
       // BlocProvider.of<ChatBloc>(context)
       //     .add(MessageRecivedEvent(Message(message: message, mine: false)));
 
@@ -62,7 +59,6 @@ class Repository {
   }
 
   void disconnect() {
-    print('Log : Disconnecting......');
     _socket.clearListeners();
     _socket.close();
   }

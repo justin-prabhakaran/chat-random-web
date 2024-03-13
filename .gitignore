@@ -1,8 +1,8 @@
-# #my ignore
-# server/node_modules
+#my ignore
+server/node_modules
 # web
 # test
-# android
+
 
 
 # Miscellaneous
@@ -37,7 +37,7 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+# /build/
 
 # Symbolication related
 app.*.symbols
@@ -45,10 +45,6 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
 
 server/node_modules
 

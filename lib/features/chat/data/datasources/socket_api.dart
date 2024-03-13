@@ -10,9 +10,9 @@ class SocketAPI {
   static SocketAPI get instance => _instance;
   Socket get socket {
     if (_socket == null) {
-      print("Creating new instance of socketapi");
+      ("Creating new instance of socketapi");
       _socket = io(
-        "http://localhost:3000",
+        "https://random-chat-server-latest.onrender.com",
         OptionBuilder()
             .setTransports(['websocket'])
             .disableAutoConnect()
@@ -25,6 +25,5 @@ class SocketAPI {
 
   void createConnection() {
     _instance.socket.connect();
-    _instance.socket.onAny((event, data) => print("$event | $data"));
   }
 }
